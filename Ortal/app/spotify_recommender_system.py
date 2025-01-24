@@ -8,50 +8,45 @@ Original file is located at
 """
 
 import streamlit as st
-import os
-import zipfile
-import requests
 from gensim.models import Word2Vec
+import os
+import requests
 
-# Step 1: Set paths
-base_dir = os.path.dirname(os.path.abspath(__file__))
-model_dir = os.path.join(base_dir, "model_files")
-os.makedirs(model_dir, exist_ok=True)  # Ensure the folder exists
-zip_file_path = os.path.join(model_dir, "final4_word2vec_model.zip")
-
-# Step 2: Download the model ZIP file
-@st.cache_resource
+# Function to download individual model files
 def download_model():
-    gcs_url = "https://storage.googleapis.com/spotify-word2vec-model/final4_word2vec_model.zip"  # Replace with your actual GCS URL
-    response = requests.get(gcs_url, stream=True)
-    if response.status_code == 200:
-        with open(zip_file_path, "wb") as f:
-            for chunk in response.iter_content(chunk_size=1024):
-                if chunk:
-                    f.write(chunk)
-        return True
-    else:
-        st.error("Failed to download the model file.")
-        return False
+    base_url = "https://storage.googleapis.com/spotify-word2vec-model/"  # Update with your bucket URL
+    files = [
+        "final4_word2vec_model.model",
+        "final4_word2vec_model.model.syn1neg.npy",
+        "final4_word2vec_model.model.wv.vectors.npy"
+    ]
+    local_dir = "model_files"
+    os.makedirs(local_dir, exist_ok=True)
 
-if not os.path.exists(zip_file_path):
-    st.info("Downloading model from Google Cloud...")
-    if download_model():
-        st.success("Model downloaded successfully!")
+    for file_name in files:
+        file_url = f"{base_url}{file_name}"
+        local_path = os.path.join(local_dir, file_name)
+        if not os.path.exists(local_path):
+            st.info(f"Downloading {file_name}...")
+            try:
+                with open(local_path, "wb") as f:
+                    response = requests.get(file_url)
+                    response.raise_for_status()  # Raise an error for failed requests
+                    f.write(response.content)
+                    st.success(f"Downloaded {file_name}")
+            except Exception as e:
+                st.error(f"Error downloading {file_name}: {e}")
+                st.stop()
+        else:
+            st.info(f"{file_name} already exists locally.")
+    return local_dir
 
-# Step 3: Extract the ZIP file
-extraction_folder = os.path.join(model_dir, "extracted_model")
-if not os.path.exists(extraction_folder):
-    try:
-        with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
-            zip_ref.extractall(extraction_folder)
-        st.success("Model files extracted successfully!")
-    except Exception as e:
-        st.error(f"Error extracting model ZIP file: {e}")
-        st.stop()
+# Step 1: Download the model files
+st.info("Downloading model from Google Cloud...")
+model_dir = download_model()
 
-# Step 4: Load the Word2Vec model
-model_path = os.path.join(extraction_folder, "final4_word2vec_model.model")
+# Step 2: Load the Word2Vec model
+model_path = os.path.join(model_dir, "final4_word2vec_model.model")
 try:
     model = Word2Vec.load(model_path)
     st.success("Model loaded successfully!")
@@ -60,7 +55,7 @@ except Exception as e:
     st.error(f"Error loading model: {e}")
     st.stop()
 
-# Step 5: Streamlit UI for Recommendations
+# Step 3: Streamlit UI for Recommendations
 st.title("🎵 Artist-Based Playlist Recommender 🎵")
 st.markdown("Enter your preferred **artist:track** to get a personalized playlist!")
 
@@ -70,8 +65,9 @@ user_input = st.text_input("Enter a song (artistname:trackname):", "")
 # Recommendation logic
 if user_input:
     try:
+        # Check if the input exists in the vocabulary
         if user_input in model.wv:
-            recommendations = model.wv.most_similar(user_input, topn=10)
+            recommendations = model.wv.most_similar(user_input, topn=10)  # Get top 10 similar items
             st.subheader(f"Recommendations for **{user_input}**:")
             for idx, (rec, score) in enumerate(recommendations, start=1):
                 st.write(f"{idx}. {rec} _(similarity: {score:.4f})_")

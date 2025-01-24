@@ -1,0 +1,9 @@
+streamlit
+gensim
+requests
+pyngrok
+pathlib
+numpy
+pandas
+zipfile
+os

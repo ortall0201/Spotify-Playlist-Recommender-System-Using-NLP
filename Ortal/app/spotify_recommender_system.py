@@ -29,12 +29,13 @@ def download_model():
         if not os.path.exists(local_path):
             st.info(f"Downloading {file_name}...")
             try:
+                response = requests.get(file_url, timeout=60)
+                response.raise_for_status()  # Raise an error for failed requests
                 with open(local_path, "wb") as f:
-                    response = requests.get(file_url)
-                    response.raise_for_status()  # Raise an error for failed requests
                     f.write(response.content)
-                    st.success(f"Downloaded {file_name}")
-            except Exception as e:
+                st.success(f"Downloaded {file_name}")
+                st.write(f"{file_name} downloaded, size: {os.path.getsize(local_path)} bytes")  # Debugging: show file size
+            except requests.exceptions.RequestException as e:
                 st.error(f"Error downloading {file_name}: {e}")
                 st.stop()
         else:
@@ -45,9 +46,14 @@ def download_model():
 st.info("Downloading model from Google Cloud...")
 model_dir = download_model()
 
+# Debugging: List directory contents
+st.write("Model directory contents:", os.listdir(model_dir))
+
 # Step 2: Load the Word2Vec model
 model_path = os.path.join(model_dir, "final4_word2vec_model.model")
 try:
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"Model file not found at: {model_path}")
     model = Word2Vec.load(model_path)
     st.success("Model loaded successfully!")
     st.write(f"Vocabulary size: {len(model.wv.index_to_key)}")
@@ -60,7 +66,7 @@ st.title("🎵 Artist-Based Playlist Recommender 🎵")
 st.markdown("Enter your preferred **artist:track** to get a personalized playlist!")
 
 # Input box for user
-user_input = st.text_input("Enter a song (artistname:trackname):", "")
+user_input = st.text_input("Enter a song (artistname:trackname):", "").strip().lower()
 
 # Recommendation logic
 if user_input:

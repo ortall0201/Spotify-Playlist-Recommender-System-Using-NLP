@@ -77,10 +77,10 @@ ________________________________________________________________________________
 ## Dataset
 
 - The dataset is sourced from Kaggle and includes:
--- User ID
--- Playlist Names
--- Track Names
--- Artists
+   - User ID
+   - Playlist Names
+   - Track Names
+   - Artists
 - Note: All data is used for educational purposes under Spotify's terms of use.
 ______________________________________________________________________________________________________________________
 ## Model
@@ -88,9 +88,9 @@ ________________________________________________________________________________
 - Similarity Measure: Cosine similarity for determining the closeness between embeddings.
 - Optimization: Incorporates Hard Negative Sampling to improve model robustness by focusing on difficult examples.
 - Evaluation:
---Precision@K
---Recall@K
---Mean Average Precision (MAP)
+   -Precision@K
+   -Recall@K
+   -Mean Average Precision (MAP)
 ______________________________________________________________________________________________________________________
 ## Technologies Used
 

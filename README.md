@@ -261,6 +261,7 @@ recommendations.
 _____________________________________________________________________________________________________________________
 ## Repository Structure
 
+```
 Spotify-Playlist-Recommender-System-Using-NLP/ 
 ├── Ortal/ │ ├── Word2Vec_Model.ipynb: Implementation of the Word2Vec-based song embedding and recommendation system. 
 │            └── Supporting files for Word2Vec training and evaluation.
@@ -272,4 +273,5 @@ Spotify-Playlist-Recommender-System-Using-NLP/
 │          └── Visualization and result analysis tools. 
 ├── README.md: Documentation for the project. 
 ├── requirements.txt: List of dependencies required to run the project.
+```
 

@@ -1,6 +1,6 @@
 # 🎵 Spotify Playlist Recommender System Using NLP
 
-**Overview**
+## overview
 This project leverages Natural Language Processing (NLP) techniques to develop a personalized playlist recommender system. By analyzing playlist data from Spotify, the system identifies contextual relationships between songs and generates tailored recommendations based on user preferences.
 
   ![Spotify](Presentation/spotify.png)
@@ -39,14 +39,17 @@ ________________________________________________________________________________
 ```bash
 git clone https://github.com/ortall0201/Spotify-Playlist-Recommender-System-Using-NLP.git
 cd Spotify-Playlist-Recommender-System-Using-NLP
+```
 
 3. Install dependencies:
 ```bash
 pip install -r requirements.txt
+```
 
 4. (Optional) Install Jupyter Notebook to explore the project interactively:
 ```bash
 pip install notebook
+```
 
 _____________________________________________________________________________________________________________________
 ## Technologies Used

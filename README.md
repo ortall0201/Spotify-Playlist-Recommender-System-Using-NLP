@@ -13,8 +13,8 @@ _________________________________________
 - [Installation](#installation)
 - [Usage Example](#usage)
 - [Dataset](#dataset)
-- [WORD2VEC Model](#model-word2vec)
-- [WORD2VEC Model](#model-SNN-using-triplets)
+- [Word2Vec Model](#model-word2vec)
+- [Siamese Neural Network (SNN) with Triplets Model](#model-SNN-using-triplets)
 - [Results](#results)
 - [Contributing](#contributing)
 - [License](#license)
@@ -83,24 +83,78 @@ ________________________________________________________________________________
    - Track Names
    - Artists
 - Note: All data is used for educational purposes under Spotify's terms of use.
+
 ______________________________________________________________________________________________________________________
-## WORD2VEC Model
-- Embedding Technique: Word2Vec (Skip-Gram) to map songs into a dense vector space.
-- Similarity Measure: Cosine similarity for determining the closeness between embeddings.
-- Optimization: Incorporates Hard Negative Sampling to improve model robustness by focusing on difficult examples.
+## Word2Vec Model
+- Objective: Learn dense vector representations (embeddings) of songs based on their contextual relationships within playlists. The embeddings capture semantic 
+   similarities between songs, enabling the model to recommend relevant tracks based on co-occurrence patterns.
+
+- Architecture:
+
+   - Skip-Gram Model: Word2Vec uses the Skip-Gram architecture, where the goal is to predict the surrounding context (songs) for a given input song. This captures 
+     relationships between songs that frequently appear together in playlists.
+- Input and Output:
+   - Input: A single song (treated as a "word").
+   - Output: A probability distribution over the surrounding songs in the playlist.
+- The model learns to map songs to a dense, continuous vector space where similar songs are closer together.
+  
+- Embedding Space:
+
+  - Each song is represented as a vector in a high-dimensional space.
+  - The vector space is structured so that songs with similar co-occurrence patterns (e.g., appearing in similar playlists) are placed closer together.
+    
+- Optimization:
+
+  - Negative Sampling: Speeds up the training process by focusing on a small subset of "negative" examples (songs that do not appear in the same context) instead 
+    of all possible songs.
+  - Softmax Approximation: The Skip-Gram model uses an approximation of softmax to efficiently compute the probability distribution.
+    
+- Similarity Measure:
+
+  - Cosine Similarity: After training, the similarity between two song embeddings is computed using cosine similarity, which measures the angle between their 
+    vector representations. Songs with higher similarity scores are more likely to be relevant to each other.
+  
 - Evaluation:
-   - Precision
-   - Recall
-   - F1 Score
+
+   - Precision: Measures the proportion of recommended songs (by artist) that are relevant.
+   - Recall: Measures the proportion of relevant songs (by artist) included in recommendations.
+   - F1 Score: Balances precision and recall to provide a single performance metric.
+     
+- Training Process:
+
+   - Songs in playlists are tokenized (each song looks like a concatenated string "artistname:trackname" and is treated as a "word").
+   - The Skip-Gram model is trained on these sequences of songs to generate embeddings.
+   - After training, the embeddings can be used to compute similarities and make recommendations.
 ______________________________________________________________________________________________________________________
-## Siamese Neural Network (Using Triplets) Model
-- Embedding Technique: Word2Vec (Skip-Gram) to map songs into a dense vector space.
-- Similarity Measure: Cosine similarity for determining the closeness between embeddings.
-- Optimization: Incorporates Hard Negative Sampling to improve model robustness by focusing on difficult examples.
+## Siamese Neural Network (SNN) with Triplets Model
+- Objective: Train two identical neural networks to learn meaningful embeddings of songs, where the embeddings of similar songs are close, and those of dissimilar songs are far apart in the vector space. The model is optimized using triplet loss.
+
+- Architecture:
+
+   - Two Networks: The Siamese Network consists of two identical subnetworks with shared weights. Each network takes a song as input and produces its embedding in 
+      a dense vector space.
+   - Triplet Input:
+       - Anchor Song: A song taken from a playlist.
+       - Positive Song: A song from the same playlist as the anchor.
+       - Negative Song: A song from a different playlist.
+    - The network ensures that the embedding for the anchor song is closer to the positive song and farther from the negative song.
+      
+- Loss Function:
+
+    - Triplet Loss: Ensures that the distance between the embeddings of the anchor and positive songs is smaller than the distance between the embeddings of the 
+      anchor and negative songs, with a margin for separation.
+      
 - Evaluation:
-   - Precision
-   - Recall
-   - F1 Score
+
+    - Precision@K: Measures the proportion of top-K recommended songs that are relevant.
+    - Recall@K: Measures the proportion of relevant songs included in the top-K recommendations.
+    - Mean Average Precision (MAP): Evaluates the quality of ranked recommendations.
+      
+- Training Process:
+
+    - Songs are grouped into triplets (anchor, positive, negative).
+    - Each song in the triplet passes through the network to generate embeddings.
+    - Distances between embeddings are computed to calculate the triplet loss, which guides the optimization process.
 ______________________________________________________________________________________________________________________
 ## Technologies Used
 

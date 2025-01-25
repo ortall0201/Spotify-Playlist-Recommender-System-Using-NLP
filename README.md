@@ -1,28 +1,64 @@
-# Spotify-Playlist-Recommender-System-Using-NLP
-This repository contains a comprehensive exploration of Spotify playlist data and the development of an intelligent music recommender system. Leveraging cutting-edge Natural Language Processing (NLP) techniques, such as contextualized embeddings and Word2Vec, this project aims to uncover meaningful patterns in playlist data and suggest personalized track recommendations.
+# 🎵 Spotify Playlist Recommender System Using NLP
+
+**Overview**
+This project leverages Natural Language Processing (NLP) techniques to develop a personalized playlist recommender system. By analyzing playlist data from Spotify, the system identifies contextual relationships between songs and generates tailored recommendations based on user preferences.
 
   ![Spotify](Presentation/spotify.png)
+_________________________________________
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Dataset](#dataset)
+- [Model](#model)
+- [Results](#results)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+
+____________________________________________________________________________
+## Features
+
+- Artist-Based Recommendations: Focuses on artist similarity using fuzzy matching techniques to handle inconsistencies in naming conventions.
+- Word2Vec Embeddings: Generates song embeddings to represent relationships within playlists.
+- Hard Negative Sampling: Enhances model training by focusing on challenging negative examples.
+- Evaluation Metrics: Includes Precision@K, Recall@K, and Mean Average Precision (MAP) to assess performance.
+- Cosine Similarity: Used to compute the similarity between song embeddings for accurate recommendations.
+- Cleaning and preprocessing of Spotify playlist data to handle missing values, inconsistencies, and special characters.
+- Visualization of key insights, such as top artists, track distributions, and playlist diversity.
+
 _____________________________________________________________________________________________________________________
-**Features**
-Exploratory Data Analysis (EDA):
 
-Cleaning and preprocessing of Spotify playlist data to handle missing values, inconsistencies, and special characters.
-Visualization of key insights, such as top artists, track distributions, and playlist diversity.
-Natural Language Processing (NLP):
+## Installation
+**Note**: The commands below should be run in the terminal (Command Prompt, Bash, or Shell), not inside Jupyter Notebook.
 
-Implementation of Word2Vec and contextualized embeddings to model the relationships between tracks and playlists.
-Recommender System:
+1. Clone this repository:
+```bash
+git clone https://github.com/ortall0201/Spotify-Playlist-Recommender-System-Using-NLP.git
+cd Spotify-Playlist-Recommender-System-Using-NLP
 
-A prototype music recommendation engine that predicts tracks based on playlist and user input.
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+
+4. (Optional) Install Jupyter Notebook to explore the project interactively:
+```bash
+pip install notebook
+
 _____________________________________________________________________________________________________________________
-**Technologies Used**
+## Technologies Used
+
 Python: Data analysis and machine learning.
 pandas, NumPy: Data manipulation and preprocessing.
 Matplotlib, Seaborn: Data visualization.
 Gensim, SpaCy, or Hugging Face: NLP modeling.
 scikit-learn: Recommender system development.
 ____________________________________________________________________________________________________________________
-**Dataset**
+## Dataset
+
 Name of the dataset: Spotify Playlists-
 Type of the dataset: 1.2GB of tabular data for music recommendation
 
@@ -33,12 +69,12 @@ You have 2 options:
 2. Use direct public links to the dataset in the project, without downloading.
 
 _________________________________________________________________________________________________________________
-**Goals**
+## Goals
 Extract meaningful insights from Spotify playlist data.
 Build a scalable and effective music recommender system using NLP.
 Explore the potential of embedding techniques for playlist and track analysis.
 _____________________________________________________________________________________________________________________
-**Future Work**
+## Future Work
 Incorporate advanced embeddings such as BERT-based models for contextual track recommendations.
 Add user-specific personalization for playlist generation.
 Extend the analysis to include audio features like tempo, key, and energy.

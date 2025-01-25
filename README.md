@@ -42,8 +42,8 @@ ____________________________________________________________________________
 _____________________________________________________________________________________________________________________
 
 ## Installation
-**Note1**: The commands below should be run in the terminal (Command Prompt, Bash, or Shell), not inside Jupyter Notebook.
-**Note2**: The repository is devided into contributors' folders (see repository structure at the end of readme) and each contains the 
+- **Note1**: The commands below should be run in the terminal (Command Prompt, Bash, or Shell), not inside Jupyter Notebook.
+- **Note2**: The repository is devided into contributors' folders (see repository structure at the end of readme) and each contains the 
            specific jupiter notebook to run + requirements.txt (=imports) file corresponding with that jupiter notebook. 
 
 1. Clone this repository:

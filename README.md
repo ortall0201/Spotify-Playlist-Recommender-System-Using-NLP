@@ -11,7 +11,7 @@ _________________________________________
 ## Table of Contents
 
 - [Overview](#overview)
-- [Features](#features)
+- [Project Functionalities](#project-functionalities)
 - [Installation](#installation)
 - [Usage Example](#usage-example)
 - [Dataset](#dataset)
@@ -28,7 +28,7 @@ _________________________________________
 
 
 ____________________________________________________________________________
-## Features
+## Project Functionalities
 
 - Artist-Based Recommendations: Focuses on artist similarity using fuzzy matching techniques to handle inconsistencies in naming conventions.
 - Word2Vec Embeddings: Generates song embeddings to represent relationships within playlists.

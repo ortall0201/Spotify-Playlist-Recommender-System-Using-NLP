@@ -99,6 +99,9 @@ ________________________________________________________________________________
    - Track Names
    - Artists
 - Note: All data is used for educational purposes under Spotify's terms of use.
+
+![Original](Presentation/Original_data.png)
+![Wordcloud](Presentation/wordcloud.png)
 ______________________________________________________________________________________________________________________
 ## Word2Vec Model
 - Objective: Learn dense vector representations (embeddings) of songs based on their contextual relationships within playlists. The embeddings capture semantic 

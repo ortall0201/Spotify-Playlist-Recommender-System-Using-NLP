@@ -13,7 +13,8 @@ _________________________________________
 - [Installation](#installation)
 - [Usage Example](#usage)
 - [Dataset](#dataset)
-- [Model](#model)
+- [WORD2VEC Model](#model-word2vec)
+- [WORD2VEC Model](#model-SNN-using-triplets)
 - [Results](#results)
 - [Contributing](#contributing)
 - [License](#license)
@@ -83,14 +84,23 @@ ________________________________________________________________________________
    - Artists
 - Note: All data is used for educational purposes under Spotify's terms of use.
 ______________________________________________________________________________________________________________________
-## Model
+## WORD2VEC Model
 - Embedding Technique: Word2Vec (Skip-Gram) to map songs into a dense vector space.
 - Similarity Measure: Cosine similarity for determining the closeness between embeddings.
 - Optimization: Incorporates Hard Negative Sampling to improve model robustness by focusing on difficult examples.
 - Evaluation:
-   -Precision@K
-   -Recall@K
-   -Mean Average Precision (MAP)
+   - Precision
+   - Recall
+   - F1 Score
+______________________________________________________________________________________________________________________
+## Siamese Neural Network (Using Triplets) Model
+- Embedding Technique: Word2Vec (Skip-Gram) to map songs into a dense vector space.
+- Similarity Measure: Cosine similarity for determining the closeness between embeddings.
+- Optimization: Incorporates Hard Negative Sampling to improve model robustness by focusing on difficult examples.
+- Evaluation:
+   - Precision
+   - Recall
+   - F1 Score
 ______________________________________________________________________________________________________________________
 ## Technologies Used
 

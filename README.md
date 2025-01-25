@@ -1,5 +1,7 @@
 # Spotify-Playlist-Recommender-System-Using-NLP
 This repository contains a comprehensive exploration of Spotify playlist data and the development of an intelligent music recommender system. Leveraging cutting-edge Natural Language Processing (NLP) techniques, such as contextualized embeddings and Word2Vec, this project aims to uncover meaningful patterns in playlist data and suggest personalized track recommendations.
+
+  ![Spotify](Presentation/spotify.png)
 _____________________________________________________________________________________________________________________
 **Features**
 Exploratory Data Analysis (EDA):

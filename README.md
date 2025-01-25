@@ -25,6 +25,7 @@ _________________________________________
 - [Notes](#notes)
 - [Goals](#goals)
 - [Future work](#future-work)
+- [Repository Structure](#repository-structure)
 
 
 ____________________________________________________________________________
@@ -236,7 +237,7 @@ ________________________________________________________________________________
    - Manor Shpritz   Email: manorsh@gmail.com
    - Ortal Lasry     Email: Ortalgr@gmail.com
    - Or Cohen Raviv  Email: or.cohen.raviv@gmail.com
-______________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________
 ## Notes
 
 To further improve the project:
@@ -256,4 +257,19 @@ ________________________________________________________________________________
 
 Incorporate other features like time series to capture the mood of the user and give him more refined playlists
 recommendations.
+
+_____________________________________________________________________________________________________________________
+## Repository Structure
+
+Spotify-Playlist-Recommender-System-Using-NLP/ 
+├── Ortal/ │ ├── Word2Vec_Model.ipynb: Implementation of the Word2Vec-based song embedding and recommendation system. 
+│            └── Supporting files for Word2Vec training and evaluation.
+├── Manor/ 
+│          ├── Triplet_Formation_Model.ipynb: Siamese Neural Network implementation using triplets. 
+│          └── Supporting scripts for model training and validation. 
+├── Or/ 
+│          ├── Siamese_Enhancements.ipynb: Enhancements and evaluation for the Siamese Neural Network. 
+│          └── Visualization and result analysis tools. 
+├── README.md: Documentation for the project. 
+├── requirements.txt: List of dependencies required to run the project.
 

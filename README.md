@@ -100,7 +100,7 @@ ________________________________________________________________________________
    - Artists
 - Note: All data is used for educational purposes under Spotify's terms of use.
 
-![Original](Presentation/Original_data.png)
+![Original](Presentation/Originaldata.png)
 ![Wordcloud](Presentation/wordcloud.png)
 ______________________________________________________________________________________________________________________
 ## Word2Vec Model

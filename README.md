@@ -3,6 +3,8 @@
 ## overview
 This project leverages Natural Language Processing (NLP) techniques to develop a personalized playlist recommender system. By analyzing playlist data from Spotify, the system identifies contextual relationships between songs and generates tailored recommendations based on user preferences.
 
+**Business question ?** "How can we develop a system to recommend personalized playlists to users, leveraging playlist data alone to identify contextual relationships between songs and generate relevant suggestions for a given input song?“
+
   ![Spotify](Presentation/spotify.png)
 _________________________________________
 
@@ -97,7 +99,6 @@ ________________________________________________________________________________
    - Track Names
    - Artists
 - Note: All data is used for educational purposes under Spotify's terms of use.
-
 ______________________________________________________________________________________________________________________
 ## Word2Vec Model
 - Objective: Learn dense vector representations (embeddings) of songs based on their contextual relationships within playlists. The embeddings capture semantic 

@@ -11,7 +11,7 @@ _________________________________________
 - [Overview](#overview)
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
+- [Usage Example](#usage)
 - [Dataset](#dataset)
 - [Model](#model)
 - [Results](#results)
@@ -52,6 +52,46 @@ pip install notebook
 ```
 
 _____________________________________________________________________________________________________________________
+
+## Usage Example
+
+1. Preprocess the dataset:
+
+- Clean and tokenize the raw playlist data.
+- Generate Word2Vec embeddings using the provided scripts.
+  
+2. Train the model:
+
+- Run the training script with default parameters or adjust for customization:
+```bash
+python train_model.py
+```
+
+3. Generate recommendations:
+
+- Use the script to recommend songs based on input playlists:
+```bash
+python recommend.py --input_playlist "playlist_name"
+```
+______________________________________________________________________________________________________________________
+## Dataset
+
+- The dataset is sourced from Kaggle and includes:
+-- User ID
+-- Playlist Names
+-- Track Names
+-- Artists
+- Note: All data is used for educational purposes under Spotify's terms of use.
+______________________________________________________________________________________________________________________
+## Model
+- Embedding Technique: Word2Vec (Skip-Gram) to map songs into a dense vector space.
+- Similarity Measure: Cosine similarity for determining the closeness between embeddings.
+- Optimization: Incorporates Hard Negative Sampling to improve model robustness by focusing on difficult examples.
+- Evaluation:
+--Precision@K
+--Recall@K
+--Mean Average Precision (MAP)
+______________________________________________________________________________________________________________________
 ## Technologies Used
 
 Python: Data analysis and machine learning.

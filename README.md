@@ -164,6 +164,12 @@ ________________________________________________________________________________
 
     - Triplet Loss: Ensures that the distance between the embeddings of the anchor and positive songs is smaller than the distance between the embeddings of the 
       anchor and negative songs, with a margin for separation.
+
+- Training Process:
+
+    - Songs are grouped into triplets (anchor, positive, negative).
+    - Each song in the triplet passes through the network to generate embeddings.
+    - Distances between embeddings are computed to calculate the triplet loss, which guides the optimization process.
       
 - Evaluation:
 
@@ -171,11 +177,6 @@ ________________________________________________________________________________
     - Recall@K: Measures the proportion of relevant songs included in the top-K recommendations.
     - Mean Average Precision (MAP): Evaluates the quality of ranked recommendations.
       
-- Training Process:
-
-    - Songs are grouped into triplets (anchor, positive, negative).
-    - Each song in the triplet passes through the network to generate embeddings.
-    - Distances between embeddings are computed to calculate the triplet loss, which guides the optimization process.
 ______________________________________________________________________________________________________________________
 ## Technologies Used
 

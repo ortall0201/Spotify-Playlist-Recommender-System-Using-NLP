@@ -272,7 +272,7 @@ Spotify-Playlist-Recommender-System-Using-NLP/
 │          ├── Triplet_Formation_Model.ipynb: Siamese Neural Network implementation using triplets. 
 │          └── Supporting scripts for model training and validation. 
 ├── Or/ 
-│          ├── Word2Vec_Model.ipynb:Implementation of the Word2Vec-artist-song embedding and recommendation system. 
+│          ├── Word2Vec_Model-artist-song embedding and recommendation system. Using: Basic similarity map vs.Cosine-Based Similarity Map.
 │          └── Working on Manor's database. Comparing metric results against Siamese Neural Network.
 ├── README.md: Documentation for the project. 
 ├── requirements.txt: List of dependencies required to run the project.

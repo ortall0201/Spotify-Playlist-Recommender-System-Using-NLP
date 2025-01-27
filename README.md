@@ -84,6 +84,9 @@ python train_model.py
 ```bash
 python recommend.py --input_playlist "playlist_name"
 ```
+
+Example from notebook (word2vec) - in "ortal" folder in this repository:
+![resultsWord2vec](Presentation/resultsWord2vec.png)
 ______________________________________________________________________________________________________________________
 ## Dataset
 

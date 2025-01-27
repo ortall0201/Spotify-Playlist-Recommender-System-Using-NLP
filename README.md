@@ -11,7 +11,7 @@ _________________________________________
 ## Table of Contents
 
 - [Overview](#overview)
-- [Features](#features)
+- [Project Functionalities](#project-functionalities)
 - [Installation](#installation)
 - [Usage Example](#usage-example)
 - [Dataset](#dataset)
@@ -25,10 +25,11 @@ _________________________________________
 - [Notes](#notes)
 - [Goals](#goals)
 - [Future work](#future-work)
+- [Repository Structure](#repository-structure)
 
 
 ____________________________________________________________________________
-## Features
+## Project Functionalities
 
 - Artist-Based Recommendations: Focuses on artist similarity using fuzzy matching techniques to handle inconsistencies in naming conventions.
 - Word2Vec Embeddings: Generates song embeddings to represent relationships within playlists.
@@ -41,7 +42,9 @@ ____________________________________________________________________________
 _____________________________________________________________________________________________________________________
 
 ## Installation
-**Note**: The commands below should be run in the terminal (Command Prompt, Bash, or Shell), not inside Jupyter Notebook.
+- **Note1**: The commands below should be run in the terminal (Command Prompt, Bash, or Shell), not inside Jupyter Notebook.
+- **Note2**: The repository is devided into contributors' folders (see repository structure at the end of readme) and each contains the 
+           specific jupiter notebook to run + requirements.txt (=imports) file corresponding with that jupiter notebook. 
 
 1. Clone this repository:
 ```bash
@@ -100,7 +103,7 @@ ________________________________________________________________________________
    - Artists
 - Note: All data is used for educational purposes under Spotify's terms of use.
 
-![Original](Presentation/Original_data.png)
+![Original](Presentation/Originaldata.png)
 ![Wordcloud](Presentation/wordcloud.png)
 ______________________________________________________________________________________________________________________
 ## Word2Vec Model
@@ -161,6 +164,12 @@ ________________________________________________________________________________
 
     - Triplet Loss: Ensures that the distance between the embeddings of the anchor and positive songs is smaller than the distance between the embeddings of the 
       anchor and negative songs, with a margin for separation.
+
+- Training Process:
+
+    - Songs are grouped into triplets (anchor, positive, negative).
+    - Each song in the triplet passes through the network to generate embeddings.
+    - Distances between embeddings are computed to calculate the triplet loss, which guides the optimization process.
       
 - Evaluation:
 
@@ -168,11 +177,6 @@ ________________________________________________________________________________
     - Recall@K: Measures the proportion of relevant songs included in the top-K recommendations.
     - Mean Average Precision (MAP): Evaluates the quality of ranked recommendations.
       
-- Training Process:
-
-    - Songs are grouped into triplets (anchor, positive, negative).
-    - Each song in the triplet passes through the network to generate embeddings.
-    - Distances between embeddings are computed to calculate the triplet loss, which guides the optimization process.
 ______________________________________________________________________________________________________________________
 ## Technologies Used
 
@@ -236,7 +240,7 @@ ________________________________________________________________________________
    - Manor Shpritz   Email: manorsh@gmail.com
    - Ortal Lasry     Email: Ortalgr@gmail.com
    - Or Cohen Raviv  Email: or.cohen.raviv@gmail.com
-______________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________
 ## Notes
 
 To further improve the project:
@@ -256,4 +260,21 @@ ________________________________________________________________________________
 
 Incorporate other features like time series to capture the mood of the user and give him more refined playlists
 recommendations.
+
+_____________________________________________________________________________________________________________________
+## Repository Structure
+
+```
+Spotify-Playlist-Recommender-System-Using-NLP/ 
+├── Ortal/ │ ├── Word2Vec_Model.ipynb: Implementation of the Word2Vec-based song embedding and recommendation system. 
+│            └── Supporting files for Word2Vec training and evaluation.
+├── Manor/ 
+│          ├── Triplet_Formation_Model.ipynb: Siamese Neural Network implementation using triplets. 
+│          └── Supporting scripts for model training and validation. 
+├── Or/ 
+│          ├── Siamese_Enhancements.ipynb: Enhancements and evaluation for the Siamese Neural Network. 
+│          └── Visualization and result analysis tools. 
+├── README.md: Documentation for the project. 
+├── requirements.txt: List of dependencies required to run the project.
+```
 
